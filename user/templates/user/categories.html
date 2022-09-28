@@ -1,0 +1,27 @@
+{% extends "user/index.html" %}
+{% block start %}
+<li><a href="{% url "category_create" %}">Create</a></li>
+
+<table class="table">
+    <tr>
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+            <tr>
+                <td>{{category.name}}</td>
+                <td>{{category.c_type}}</td>
+                <td><a href="{% url "category_update" category.id %}">Update</a></td>
+                <td><a href="{% url "category_delete" category.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+
+{% endblock start %}

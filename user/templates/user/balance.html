@@ -1,0 +1,27 @@
+{% extends "user/index.html" %}
+{% block start %}
+<a href="{% url "balance_create" %}">Create</a>
+
+<table class="table">
+    <tr>
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Account</th>
+                <th scope="col">Balance</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ac in balance %}
+            <tr>
+                <td>{{ac.account}}</td>
+                <td>{{ac.balance}}</td>
+                <td><a href="{% url "balance_update" ac.id %}">Update</a></td>
+                <td><a href="{% url "balance_delete" ac.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+
+{% endblock start %}
